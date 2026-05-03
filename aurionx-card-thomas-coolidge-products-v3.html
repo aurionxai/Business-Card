@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#f4f4f2" />
+<title>Thomas Coolidge · AurionX</title>
+<meta name="description" content="Thomas Coolidge, COO at AurionX. Consent, ingest, enrich, and place with AurionX FormTrace, Control, and Agent." />
+
+<meta property="og:title" content="Thomas Coolidge · COO, AurionX" />
+<meta property="og:description" content="Consent, ingest, enrich, and place with AurionX FormTrace, Control, and Agent." />
+<meta property="og:type" content="profile" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#f4f4f2;
+    --ink:#000;
+    --gray:#888;
+    --gray-2:#aaa;
+    --gray-3:#c8c8c8;
+    --grid:rgba(0,0,0,0.045);
+    --line:#000;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-weight:500;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  body{
+    min-height:100svh;
+    background-color:var(--bg);
+    background-image:
+      linear-gradient(to right, var(--grid) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: 0 0;
+    overflow-x:hidden;
+  }
+
+  .wrap{
+    max-width:480px;
+    margin:0 auto;
+    padding:24px 22px 0;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* HEADER ───────────────────────────────────────────── */
+  header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:8px 0 24px;
+    border-bottom:2px solid var(--ink);
+  }
+  .wordmark{
+    font-family:'Archivo Black',sans-serif;
+    font-size:18px;
+    letter-spacing:-0.02em;
+    color:var(--ink);
+  }
+  .tag{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    padding:6px 10px;
+    background:var(--bg);
+  }
+  .tag.solid{
+    background:var(--ink);
+    color:#fff;
+  }
+
+  /* IDENTITY ──────────────────────────────────────────── */
+  .id{
+    padding:36px 0 28px;
+  }
+  .label{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:10.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gray);
+    margin-bottom:14px;
+  }
+  .name{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(64px, 18vw, 88px);
+    line-height:0.86;
+    letter-spacing:-0.04em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:6px;
+  }
+  .name .last{
+    color:var(--gray);
+    display:block;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:18px;
+  }
+
+  /* PRIMARY ACTIONS ──────────────────────────────────── */
+  .actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    margin:24px 0 0;
+    border:2px solid var(--ink);
+  }
+  .act{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:22px 8px;
+    color:var(--ink);
+    text-decoration:none;
+    border-right:1.5px solid var(--ink);
+    background:var(--bg);
+    transition:background 0.15s;
+  }
+  .act:last-child{border-right:none}
+  .act:hover{background:#ebebe8}
+  .act:active{background:var(--ink);color:#fff}
+  .act:active svg{stroke:#fff}
+  .act:active span{color:#fff}
+  .act svg{width:22px;height:22px;stroke:var(--ink);stroke-width:1.5;fill:none}
+  .act span{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+
+  /* CTA BUTTONS ──────────────────────────────────────── */
+  .cta-stack{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:14px;
+  }
+  .cta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    text-decoration:none;
+    font-family:'Archivo Black',sans-serif;
+    font-size:14.5px;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    transition:transform 0.05s ease;
+  }
+  .cta:active{transform:translate(2px,2px)}
+  .cta-primary{
+    background:var(--ink);
+    color:#fff;
+    border:2px solid var(--ink);
+  }
+  .cta-primary .arrow{color:#fff}
+  .cta-secondary{
+    background:var(--bg);
+    color:var(--ink);
+    border:2px solid var(--ink);
+  }
+  .arrow{
+    font-family:'Archivo Black',sans-serif;
+    font-size:18px;
+    line-height:1;
+  }
+
+  /* DIVIDER ──────────────────────────────────────────── */
+  .rule{
+    height:2px;
+    background:var(--ink);
+    margin:32px 0 0;
+  }
+
+  /* STATS GRID ───────────────────────────────────────── */
+  .stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border-bottom:2px solid var(--ink);
+  }
+  .stat{
+    padding:24px 18px;
+    border-right:1.5px solid var(--ink);
+    border-top:1.5px solid var(--ink);
+  }
+  .stat:nth-child(2n){border-right:none}
+  .stat-num{
+    font-family:'Archivo Black',sans-serif;
+    font-size:42px;
+    line-height:1;
+    letter-spacing:-0.04em;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .stat-lbl{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gray);
+  }
+
+  /* SECTION HEADER ──────────────────────────────────── */
+  .sec-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:24px 0 16px;
+  }
+  .sec-title{
+    font-family:'Archivo Black',sans-serif;
+    font-size:22px;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .sec-meta{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gray);
+  }
+
+  /* PRODUCT BOX ──────────────────────────────────────── */
+  .prods{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    border-top:2px solid var(--ink);
+    border-bottom:2px solid var(--ink);
+  }
+  .prod{
+    position:relative;
+    overflow:hidden;
+    padding:18px 18px 17px;
+    text-decoration:none;
+    color:inherit;
+    border-bottom:1.5px solid var(--ink);
+    background:var(--bg);
+    display:block;
+    transition:background 0.15s;
+  }
+  .prod:last-child{border-bottom:none}
+  .prod:hover{background:#ebebe8}
+  .prod:active{background:#e4e4df}
+  .prod::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, rgba(0,0,0,0.028), transparent 58%);
+    pointer-events:none;
+  }
+  .prod-top{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+    gap:12px;
+  }
+  .prod-kicker{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:9.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gray);
+  }
+  .prod-arrow{
+    font-family:'Archivo Black',sans-serif;
+    font-size:14px;
+    line-height:1;
+    color:var(--ink);
+  }
+  .prod-head{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+    gap:12px;
+  }
+  .prod-name{
+    font-family:'Archivo Black',sans-serif;
+    font-size:28px;
+    letter-spacing:-0.035em;
+    text-transform:uppercase;
+    line-height:0.95;
+  }
+  .prod-tag{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:9.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    border:1.5px solid var(--ink);
+    padding:4px 8px;
+    flex-shrink:0;
+    background:var(--bg);
+  }
+  .prod-desc{
+    position:relative;
+    font-family:'Inter',sans-serif;
+    font-weight:500;
+    font-size:13.25px;
+    line-height:1.42;
+    color:#333;
+    margin-bottom:14px;
+    max-width:34ch;
+  }
+  .prod-stats{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border:1.5px solid var(--ink);
+  }
+  .prod-stat{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:9.25px;
+    line-height:1.2;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gray);
+    padding:7px 8px;
+    border-right:1.5px solid var(--ink);
+    min-width:0;
+  }
+  .prod-stat:last-child{border-right:none}
+  .prod-stat strong{
+    display:block;
+    color:var(--ink);
+    font-weight:600;
+    margin:0 0 2px;
+    font-size:10px;
+    letter-spacing:0.04em;
+  }
+
+  /* CONTACT ──────────────────────────────────────────── */
+  .contact{
+    border-bottom:2px solid var(--ink);
+  }
+  .contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1.5px solid var(--ink);
+    text-decoration:none;
+    color:inherit;
+    transition:padding 0.15s;
+  }
+  .contact-row:last-child{border-bottom:none}
+  .contact-row:hover{padding-left:6px}
+  .contact-key{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:10.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gray);
+  }
+  .contact-val{
+    font-family:'Archivo Black',sans-serif;
+    font-size:15px;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  /* FOOTER ───────────────────────────────────────────── */
+  footer{
+    margin-top:auto;
+    padding:28px 0 32px;
+  }
+  .crest{
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:10px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gray);
+    text-align:center;
+    margin-bottom:8px;
+  }
+  .footnote{
+    text-align:center;
+    font-family:'Archivo Black',sans-serif;
+    font-size:13px;
+    line-height:1.25;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .foot-subnote{
+    text-align:center;
+    margin-top:7px;
+    font-family:'JetBrains Mono',ui-monospace,monospace;
+    font-weight:500;
+    font-size:9.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--gray);
+  }
+  .footnote a{
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:2px solid var(--ink);
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{transition:none !important}
+  }
+
+  /* Wider screens — keep card centered, tighten width */
+  @media (min-width:520px){
+    body{padding:24px 0}
+    .wrap{
+      border:2px solid var(--ink);
+      background:var(--bg);
+      min-height:auto;
+      margin-top:24px;
+      margin-bottom:24px;
+      padding:24px 24px 0;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="wordmark">AURIONX</div>
+      <div class="tag solid">Digital Card</div>
+    </header>
+
+    <section class="id">
+      <div class="label">Profile</div>
+      <h1 class="name">
+        Thomas
+        <span class="last">Coolidge</span>
+      </h1>
+      <div class="meta-row">
+        <span class="tag">COO</span>
+        <span class="tag">AurionX</span>
+        <span class="tag">Austin TX</span>
+      </div>
+    </section>
+
+    <nav class="actions" aria-label="Quick contact actions">
+      <a class="act" href="tel:+17025289041" aria-label="Call Thomas">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Call</span>
+      </a>
+      <a class="act" href="mailto:thomas@aurionx.ai" aria-label="Email Thomas">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Email</span>
+      </a>
+      <a class="act" id="vcard-link" href="#" download="thomas-coolidge-aurionx.vcf" aria-label="Save contact">
+        <svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        <span>Save</span>
+      </a>
+    </nav>
+
+    <div class="cta-stack">
+      <a class="cta cta-primary" href="https://www.aurionx.ai/schedule">
+        <span>Book a Demo</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="cta cta-secondary" href="https://agent.aurionx.ai/sign-up">
+        <span>Start Free Trial</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">500</div>
+        <div class="stat-lbl">Free Minutes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">60s</div>
+        <div class="stat-lbl">To First Agent</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-lbl">Availability</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">80%</div>
+        <div class="stat-lbl">Cost Reduction</div>
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <h2 class="sec-title">Products</h2>
+      <span class="sec-meta">03 / 03</span>
+    </div>
+
+    <section class="prods">
+      <a class="prod" href="https://www.aurionx.ai/ai-voice-agents">
+        <div class="prod-top">
+          <span class="prod-kicker">01 / LIVE COMMS</span>
+          <span class="prod-arrow">→</span>
+        </div>
+        <div class="prod-head">
+          <div class="prod-name">Agent</div>
+          <span class="prod-tag">COMMS</span>
+        </div>
+        <p class="prod-desc">AI phone agents that answer, qualify, book, and transfer every call — live in 60 seconds with 500 free minutes.</p>
+        <div class="prod-stats">
+          <span class="prod-stat"><strong>24/7</strong>coverage</span>
+          <span class="prod-stat"><strong>60s</strong>launch</span>
+          <span class="prod-stat"><strong>80%</strong>less cost</span>
+        </div>
+      </a>
+
+      <a class="prod" href="https://www.aurionx.ai/formtrace">
+        <div class="prod-top">
+          <span class="prod-kicker">02 / CONSENT PROOF</span>
+          <span class="prod-arrow">→</span>
+        </div>
+        <div class="prod-head">
+          <div class="prod-name">FormTrace</div>
+          <span class="prod-tag">CONSENT</span>
+        </div>
+        <p class="prod-desc">Immutable consent evidence for every form: timestamped page snapshots, IP, metadata, and audit-ready proof.</p>
+        <div class="prod-stats">
+          <span class="prod-stat"><strong>$0.01</strong>/record</span>
+          <span class="prod-stat"><strong>IP</strong>+ snapshot</span>
+          <span class="prod-stat"><strong>Audit</strong>ready</span>
+        </div>
+      </a>
+
+      <a class="prod" href="https://www.aurionx.ai/control">
+        <div class="prod-top">
+          <span class="prod-kicker">03 / OPS VISIBILITY</span>
+          <span class="prod-arrow">→</span>
+        </div>
+        <div class="prod-head">
+          <div class="prod-name">Control</div>
+          <span class="prod-tag">OPS</span>
+        </div>
+        <p class="prod-desc">Lead ops visibility for ingest, enrichment, partner routing, placements, and margin traceability from one surface.</p>
+        <div class="prod-stats">
+          <span class="prod-stat"><strong>Ingest</strong>rules</span>
+          <span class="prod-stat"><strong>Enrich</strong>+ place</span>
+          <span class="prod-stat"><strong>Margin</strong>trace</span>
+        </div>
+      </a>
+
+    </section>
+
+    <div class="sec-head">
+      <h2 class="sec-title">Contact</h2>
+      <span class="sec-meta">03 / 03</span>
+    </div>
+
+    <section class="contact">
+      <a class="contact-row" href="tel:+17025289041">
+        <span class="contact-key">Mobile</span>
+        <span class="contact-val">702.528.9041</span>
+      </a>
+      <a class="contact-row" href="mailto:thomas@aurionx.ai">
+        <span class="contact-key">Email</span>
+        <span class="contact-val">thomas@aurionx.ai</span>
+      </a>
+      <a class="contact-row" href="https://www.aurionx.ai">
+        <span class="contact-key">Web</span>
+        <span class="contact-val">aurionx.ai</span>
+      </a>
+    </section>
+
+    <footer>
+      <div class="crest">AurionX · Est. MMXXIV · Austin TX</div>
+      <div class="footnote">Prove consent. Replace your call center. Control everything.</div>
+      <div class="foot-subnote">AurionX is your one-stop shop.</div>
+    </footer>
+
+  </div>
+
+<script>
+  (function(){
+    var vcard = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "N:Coolidge;Thomas;;;",
+      "FN:Thomas Coolidge",
+      "ORG:AurionX",
+      "TITLE:Chief Operating Officer",
+      "TEL;TYPE=CELL,VOICE:+17025289041",
+      "EMAIL;TYPE=INTERNET,WORK:thomas@aurionx.ai",
+      "URL:https://www.aurionx.ai",
+      "URL;TYPE=BOOKING:https://www.aurionx.ai/schedule",
+      "NOTE:FormTrace · Control · Agent — consent, ingest, enrich, place",
+      "END:VCARD"
+    ].join("\r\n");
+    var blob = new Blob([vcard], {type:"text/vcard;charset=utf-8"});
+    document.getElementById("vcard-link").href = URL.createObjectURL(blob);
+  })();
+</script>
+</body>
+</html>
